@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Esma!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="cake-container">
+        <div class="cake">
+            <div class="layer base"></div>
+            <div class="layer middle"></div>
+            <div class="layer top"></div>
+            
+            <div class="icing icing-1"></div>
+            <div class="icing icing-2"></div>
+            <div class="icing icing-3"></div>
+            
+            <div class="candle"></div>
+            <div class="flame"></div>
+            
+            <div class="message">Happy Birthday Esma!</div>
+        </div>
+    </div>
+
+    <script>
+        // Create sparkles on click
+        document.addEventListener('click', function(e) {
+            for (let i = 0; i < 10; i++) {
+                createSparkle(e.clientX, e.clientY);
+            }
+        });
+        
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = x + 'px';
+            sparkle.style.top = y + 'px';
+            sparkle.style.width = Math.random() * 15 + 5 + 'px';
+            sparkle.style.height = sparkle.style.width;
+            sparkle.style.animationDuration = Math.random() * 0.5 + 0.5 + 's';
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 1000);
+        }
+        
+        // Automatic sparkles
+        setInterval(function() {
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            createSparkle(x, y);
+        }, 300);
+    </script>
+</body>
+</html>
